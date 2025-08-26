@@ -107,12 +107,12 @@ function Chat() {
 
   if (showNamePrompt) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center p-4">
-        <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md">
+      <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-gray-800 flex items-center justify-center p-4">
+        <div className="bg-gray-900 border border-yellow-500 rounded-2xl shadow-2xl p-8 w-full max-w-md">
           <div className="text-center mb-6">
-            <UserCircle2 className="w-16 h-16 text-blue-600 mx-auto mb-4" />
-            <h2 className="text-2xl font-bold text-gray-800 mb-2">Join Chat Room</h2>
-            <p className="text-gray-600">Enter your name to join the conversation</p>
+            <UserCircle2 className="w-16 h-16 text-yellow-500 mx-auto mb-4" />
+            <h2 className="text-2xl font-bold text-yellow-500 mb-2">Join Chat Cat</h2>
+            <p className="text-gray-400">Enter your name to join the shadows</p>
             <p className="text-sm text-gray-500 mt-2">Room ID: {roomId}</p>
           </div>
           <div className="space-y-4">
@@ -122,13 +122,13 @@ function Chat() {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleNameSubmit()}
-              className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500"
+              className="w-full px-4 py-3 border-2 border-gray-700 bg-black text-white rounded-xl focus:outline-none focus:border-yellow-500"
               maxLength={20}
               autoFocus
             />
             <button
               onClick={handleNameSubmit}
-              className="w-full bg-blue-600 text-white px-6 py-3 rounded-xl"
+              className="w-full bg-yellow-600 hover:bg-yellow-700 text-black font-bold px-6 py-3 rounded-xl"
             >
               Join Chat
             </button>
@@ -139,34 +139,37 @@ function Chat() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 flex flex-col">
+    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-gray-800 flex flex-col">
       {/* Header */}
-      <div className="bg-white shadow-sm border-b px-4 py-3">
+      <div className="bg-gray-900 border-b border-yellow-600 shadow px-4 py-3">
         <div className="max-w-4xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <button onClick={() => navigate("/")} className="p-2 hover:bg-gray-100 rounded-full">
-              <ArrowLeft className="w-5 h-5 text-gray-600" />
+            <button onClick={() => navigate("/")} className="p-2 hover:bg-gray-800 rounded-full">
+              <ArrowLeft className="w-5 h-5 text-yellow-500" />
             </button>
             <div className="flex items-center gap-2">
-              <UserCircle2 className="w-8 h-8 text-blue-600" />
+              <UserCircle2 className="w-8 h-8 text-yellow-500" />
               <div>
-                <h2 className="font-bold text-gray-800">QuickChat</h2>
-                <p className="text-sm text-gray-500">Logged in as {username}</p>
+                <h2 className="font-bold text-yellow-400">Chat-Cat</h2>
+                <p className="text-sm text-gray-400">Logged in as {username}</p>
               </div>
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <button onClick={() => setShowUsers(!showUsers)} className="text-sm bg-blue-100 px-3 py-1 rounded-full text-blue-700">
+            <button
+              onClick={() => setShowUsers(!showUsers)}
+              className="text-sm bg-yellow-800 px-3 py-1 rounded-full text-yellow-300"
+            >
               <Users className="w-4 h-4 inline mr-1" /> {users.length}
             </button>
             <button onClick={() => setShowRoomInfo(!showRoomInfo)} title="Room Info">
-              <Info className="w-5 h-5 text-gray-600" />
+              <Info className="w-5 h-5 text-yellow-400" />
             </button>
             <button onClick={handleCopyLink} title="Copy Link">
-              <Copy className="w-5 h-5 text-gray-600" />
+              <Copy className="w-5 h-5 text-yellow-400" />
             </button>
             <button onClick={handleShareWhatsApp} title="Share via WhatsApp">
-              <Share2 className="w-5 h-5 text-green-600" />
+              <Share2 className="w-5 h-5 text-green-500" />
             </button>
           </div>
         </div>
@@ -174,13 +177,16 @@ function Chat() {
 
       {/* Room Info */}
       {showRoomInfo && (
-        <div className="bg-yellow-50 border-b px-4 py-3">
+        <div className="bg-gray-800 border-b border-yellow-600 px-4 py-3">
           <div className="max-w-4xl mx-auto flex justify-between">
             <div>
-              <h3 className="font-semibold text-gray-800">Room ID:</h3>
-              <p className="text-sm text-gray-600">{roomId}</p>
+              <h3 className="font-semibold text-yellow-400">Room ID:</h3>
+              <p className="text-sm text-gray-400">{roomId}</p>
             </div>
-            <button onClick={handleCopyRoomId} className="text-sm bg-yellow-200 px-3 py-1 rounded-lg">
+            <button
+              onClick={handleCopyRoomId}
+              className="text-sm bg-yellow-700 px-3 py-1 rounded-lg text-black font-bold"
+            >
               Copy Room ID
             </button>
           </div>
@@ -190,14 +196,14 @@ function Chat() {
       {/* Main Chat Body */}
       <div className="flex-1 flex max-w-4xl mx-auto w-full">
         {showUsers && (
-          <div className="w-64 bg-white border-r p-4">
-            <h3 className="font-semibold text-gray-800 mb-3">Online Users</h3>
+          <div className="w-64 bg-gray-900 border-r border-yellow-600 p-4">
+            <h3 className="font-semibold text-yellow-400 mb-3">Online Users</h3>
             <ul className="space-y-2">
               {users.map((user, idx) => (
-                <li key={idx} className="text-sm flex items-center">
+                <li key={idx} className="text-sm flex items-center text-gray-300">
                   <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
                   {user}
-                  {user === username && <span className="text-blue-500 ml-2">(You)</span>}
+                  {user === username && <span className="text-yellow-400 ml-2">(You)</span>}
                 </li>
               ))}
             </ul>
@@ -206,10 +212,19 @@ function Chat() {
         <div className="flex-1 flex flex-col">
           <div className="flex-1 p-4 space-y-3 overflow-y-auto">
             {messages.map((msg, i) => (
-              <div key={i} className={`flex ${msg.username === username ? "justify-end" : "justify-start"}`}>
-                <div className={`px-4 py-2 rounded-2xl max-w-md break-words ${msg.username === username ? "bg-blue-500 text-white" : "bg-white text-gray-800 shadow-sm"}`}>
+              <div
+                key={i}
+                className={`flex ${msg.username === username ? "justify-end" : "justify-start"}`}
+              >
+                <div
+                  className={`px-4 py-2 rounded-2xl max-w-md break-words ${
+                    msg.username === username
+                      ? "bg-yellow-600 text-black font-medium"
+                      : "bg-gray-800 text-gray-200 border border-gray-700"
+                  }`}
+                >
                   {msg.username !== username && (
-                    <div className="text-xs font-semibold text-blue-600 mb-1">{msg.username}</div>
+                    <div className="text-xs font-semibold text-yellow-400 mb-1">{msg.username}</div>
                   )}
                   <div>{msg.message}</div>
                   <div className="text-xs text-right mt-1 opacity-70">{msg.timestamp}</div>
@@ -220,14 +235,14 @@ function Chat() {
           </div>
 
           {/* Input */}
-          <div className="border-t bg-white p-4">
+          <div className="border-t border-yellow-600 bg-gray-900 p-4">
             <div className="flex items-center gap-2 max-w-2xl mx-auto">
               <button onClick={() => setShowEmoji(!showEmoji)}>
-                <Smile className="w-5 h-5 text-gray-600" />
+                <Smile className="w-5 h-5 text-yellow-400" />
               </button>
               <input
                 type="text"
-                className="flex-1 border-2 border-gray-200 rounded-full px-4 py-2 focus:outline-none"
+                className="flex-1 border-2 border-gray-700 bg-black text-white rounded-full px-4 py-2 focus:outline-none focus:border-yellow-500"
                 placeholder="Type a message..."
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
@@ -236,13 +251,13 @@ function Chat() {
               <button
                 onClick={handleSend}
                 disabled={!input.trim()}
-                className="bg-blue-500 text-white px-4 py-2 rounded-full"
+                className="bg-yellow-600 hover:bg-yellow-700 text-black font-bold px-4 py-2 rounded-full"
               >
                 <Send className="w-4 h-4" />
               </button>
             </div>
             {showEmoji && (
-              <div className="mt-2">
+              <div className="mt-2 bg-gray-900 border border-yellow-600 rounded-lg p-2">
                 <Picker onEmojiClick={onEmojiClick} />
               </div>
             )}

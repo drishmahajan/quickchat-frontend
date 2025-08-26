@@ -22,7 +22,9 @@ function Home() {
 
     try {
       await navigator.clipboard.writeText(fullLink);
-      alert(`Room created successfully!\n\nRoom ID: ${newRoomId}\n\nFull link copied to clipboard! Share it with others to chat together.`);
+      alert(
+        `Room created successfully!\n\nRoom ID: ${newRoomId}\n\nFull link copied to clipboard! Share it with others to chat together.`
+      );
     } catch (err) {
       const textArea = document.createElement("textarea");
       textArea.value = fullLink;
@@ -30,7 +32,9 @@ function Home() {
       textArea.select();
       document.execCommand("copy");
       document.body.removeChild(textArea);
-      alert(`Room created successfully!\n\nRoom ID: ${newRoomId}\n\nFull link copied to clipboard! Share it with others to chat together.`);
+      alert(
+        `Room created successfully!\n\nRoom ID: ${newRoomId}\n\nFull link copied to clipboard! Share it with others to chat together.`
+      );
     }
 
     setIsLoading(false);
@@ -38,7 +42,9 @@ function Home() {
   };
 
   const validateRoomId = (id) => {
-    return /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/.test(id);
+    return /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/.test(
+      id
+    );
   };
 
   const cleanRoomId = (input) => {
@@ -107,7 +113,10 @@ function Home() {
 
     const win = window.open(whatsappURL, "_blank");
     if (!win) {
-      alert("Popup blocked! Please allow popups or manually share this link:\n\n" + link);
+      alert(
+        "Popup blocked! Please allow popups or manually share this link:\n\n" +
+          link
+      );
     }
 
     setTimeout(() => {
@@ -117,43 +126,47 @@ function Home() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50 p-4">
-      <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-black via-gray-900 to-gray-800 p-4">
+      <div className="w-full max-w-md bg-gray-900 border border-yellow-500 rounded-2xl shadow-2xl p-8">
         {/* Header */}
         <div className="text-center mb-8">
           <div className="flex justify-center mb-4">
-            <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-3 rounded-full">
-              <MessageCircle className="w-8 h-8 text-white" />
+            <div className="bg-gradient-to-r from-yellow-500 to-yellow-700 p-3 rounded-full shadow-lg">
+              <MessageCircle className="w-8 h-8 text-black" />
             </div>
           </div>
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
-            QuickChat
+          <h1 className="text-3xl font-bold text-yellow-500 mb-2 tracking-wider">
+            Chat-Cat
           </h1>
-          <p className="text-gray-600">Connect instantly with friends and family</p>
+          <p className="text-gray-400">Chat in the shadows of the Cat </p>
         </div>
 
         {/* Username Input */}
         <div className="mb-6">
-          <label className="block text-sm font-medium text-gray-700 mb-2">Your Name</label>
+          <label className="block text-sm font-medium text-gray-300 mb-2">
+            Your Name
+          </label>
           <input
             type="text"
             placeholder="Enter your name"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+            className="w-full px-4 py-3 border-2 border-gray-700 bg-black text-white rounded-xl focus:outline-none focus:border-yellow-500 focus:ring-2 focus:ring-yellow-300"
             maxLength={20}
           />
         </div>
 
         {/* Room ID Input */}
         <div className="mb-6">
-          <label className="block text-sm font-medium text-gray-700 mb-2">Room ID (optional)</label>
+          <label className="block text-sm font-medium text-gray-300 mb-2">
+            Room ID (optional)
+          </label>
           <input
             type="text"
             placeholder="Paste Room ID or link here"
             value={roomId}
             onChange={(e) => setRoomId(e.target.value)}
-            className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-200"
+            className="w-full px-4 py-3 border-2 border-gray-700 bg-black text-white rounded-xl focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-300"
           />
         </div>
 
@@ -162,7 +175,7 @@ function Home() {
           <button
             onClick={handleCreateRoom}
             disabled={isLoading}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl shadow flex items-center justify-center gap-2 disabled:opacity-50"
+            className="w-full bg-yellow-600 hover:bg-yellow-700 text-black font-bold px-6 py-3 rounded-xl shadow-lg flex items-center justify-center gap-2 disabled:opacity-50"
           >
             <Copy className="w-5 h-5" />
             {isLoading ? "Creating..." : "Create Room & Copy Link"}
@@ -171,7 +184,7 @@ function Home() {
           <button
             onClick={handleJoinByInput}
             disabled={!roomId.trim()}
-            className="w-full bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-xl shadow flex items-center justify-center gap-2 disabled:opacity-50"
+            className="w-full bg-purple-700 hover:bg-purple-800 text-white px-6 py-3 rounded-xl shadow-lg flex items-center justify-center gap-2 disabled:opacity-50"
           >
             <Key className="w-5 h-5" />
             Join Room
@@ -179,7 +192,7 @@ function Home() {
 
           <button
             onClick={handleJoinByPrompt}
-            className="w-full bg-gray-500 hover:bg-gray-600 text-white px-6 py-3 rounded-xl shadow flex items-center justify-center gap-2"
+            className="w-full bg-gray-700 hover:bg-gray-600 text-white px-6 py-3 rounded-xl shadow-lg flex items-center justify-center gap-2"
           >
             <Users className="w-5 h-5" />
             Join via Prompt
@@ -188,7 +201,7 @@ function Home() {
           <button
             onClick={handleShareWhatsApp}
             disabled={isLoading}
-            className="w-full bg-[#25D366] hover:bg-[#1DA851] text-white px-6 py-3 rounded-xl shadow flex items-center justify-center gap-2 disabled:opacity-50"
+            className="w-full bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-xl shadow-lg flex items-center justify-center gap-2 disabled:opacity-50"
           >
             <Share2 className="w-5 h-5" />
             {isLoading ? "Sharing..." : "Create & Share via WhatsApp"}
@@ -196,19 +209,21 @@ function Home() {
         </div>
 
         {/* Help Section */}
-        <div className="mt-8 p-4 bg-blue-50 rounded-xl text-sm text-blue-700">
-          <h3 className="font-semibold text-blue-800 mb-2">How it works:</h3>
+        <div className="mt-8 p-4 bg-gray-800 rounded-xl text-sm text-yellow-400 border border-yellow-600">
+          <h3 className="font-semibold text-yellow-500 mb-2">
+            How it works:
+          </h3>
           <ul className="space-y-1">
             <li>• Enter your name and create a room</li>
             <li>• Copy and share the Room link</li>
             <li>• Others can join with the Room ID</li>
-            <li>• Start chatting instantly!</li>
+            <li>• Start chatting instantly in the Batcave!</li>
           </ul>
         </div>
       </div>
 
       <footer className="mt-8 text-center text-gray-500 text-sm">
-        Secure • Fast • No Registration Required
+        😼Secure • Fast • Cat Ready🐱
       </footer>
     </div>
   );
