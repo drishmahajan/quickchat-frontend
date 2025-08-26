@@ -4,7 +4,7 @@ import io from "socket.io-client";
 import Picker from "emoji-picker-react";
 import { UserCircle2, Send, Smile, Users, ArrowLeft, Copy, Share2, Info } from "lucide-react";
 
-const socket = io("https://quickchat-backend-pczv.onrender.com");
+const socket = io("https://quickchat-backend-11.onrender.com");
 
 function Chat() {
   const { roomId } = useParams();
